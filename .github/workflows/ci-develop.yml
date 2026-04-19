@@ -82,7 +82,7 @@ jobs:
 
       - name: Pull configuración de Vercel
         run: vercel pull example-app --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
-        working-directory: example-app
+        # working-directory: example-app
         env:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
