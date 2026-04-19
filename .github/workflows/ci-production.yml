@@ -25,6 +25,7 @@ jobs:
         with:
           node-version: 20
           cache: npm
+          cache-dependency-path: example-app/package-lock.json
       - run: npm ci
         working-directory: example-app
       
@@ -40,6 +41,7 @@ jobs:
         with:
           node-version: 20
           cache: npm
+          cache-dependency-path: example-app/package-lock.json
       - run: npm ci
         working-directory: example-app
       - run: npm run lint
@@ -79,6 +81,7 @@ jobs:
         with:
           node-version: 20
           cache: npm
+          cache-dependency-path: example-app/package-lock.json
 
       - run: npm ci
       
