@@ -44,8 +44,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: test
     environment: dev
-    env:
-      SUPABASE_DB_PASSWORD: ${{ secrets.DEV_DB_PASSWORD }}
 
     steps:
       - uses: actions/checkout@v4
@@ -56,7 +54,7 @@ jobs:
           version: latest
 
       - name: Aplicar migraciones
-        run: supabase db push --db-url "${{ secrets.DEV_DB_URL }}"
+        run: supabase db push --db-url "postgresql://postgres.jpmxyvyhvllopgugmips:${{ secrets.DEV_DB_PASSWORD }}@aws-1-us-west-2.pooler.supabase.com:5432/postgres"
 
   # ── 3. Deploy a Vercel ───────────────────────────────────────────────────────
   deploy:
