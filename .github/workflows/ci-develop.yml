@@ -78,21 +78,19 @@ jobs:
 
       - name: Instalar Vercel CLI
         run: npm install -g vercel
-        working-directory: example-app
+        # working-directory: example-app
 
       - name: Pull configuración de Vercel
-        run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+        run: vercel pull example-app --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
         working-directory: example-app
         env:
-          VERCEL_TELEMETRY_DISABLED: 1
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
       - name: Build
-        run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
-        working-directory: example-app
+        run: vercel build example-app --token=${{ secrets.VERCEL_TOKEN }}
+        # working-directory: example-app
         env:
-          VERCEL_TELEMETRY_DISABLED: 1
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
           # Variables de la app para el build
@@ -109,9 +107,8 @@ jobs:
           # VITE_ENV_NAME: development
 
       - name: Deploy (preview)
-        run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
-        working-directory: example-app
+        run: vercel deploy example-app --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
+        # working-directory: example-app
         env:
-          VERCEL_TELEMETRY_DISABLED: 1
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
