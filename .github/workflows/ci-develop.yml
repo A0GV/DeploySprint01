@@ -88,8 +88,8 @@ jobs:
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
       - name: Build
-        run: vercel build example-app --token=${{ secrets.VERCEL_TOKEN }}
-        # working-directory: example-app
+        run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
+        working-directory: example-app
         env:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
@@ -107,8 +107,8 @@ jobs:
           # VITE_ENV_NAME: development
 
       - name: Deploy (preview)
-        run: vercel deploy example-app --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
-        # working-directory: example-app
+        run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
+        working-directory: example-app
         env:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
